@@ -9,7 +9,7 @@
 import SwiftUI
 
 extension Color {
-    static let lime = Color(red: 0.8, green: 1.0, blue: 0.0)
+    static let vibrantMint = Color(red: 0.0, green: 0.8, blue: 0.6)
 }
 
 struct SettingItem: View {
@@ -35,7 +35,7 @@ struct ContentView: View {
         ZStack {
             // Background gradient
             LinearGradient(
-                gradient: Gradient(colors: [Color.white, Color.lime.opacity(0.3)]),
+                gradient: Gradient(colors: [Color.white, Color.vibrantMint]),
                 startPoint: .top,
                 endPoint: .bottom
             )
@@ -70,7 +70,7 @@ struct ContentView: View {
                         Text("Translator")
                             .font(.caption)
                     }
-                    .foregroundColor(.gray)
+                    .foregroundColor(.black)
                     
                     VStack {
                         Image(systemName: "gearshape")
@@ -78,7 +78,7 @@ struct ContentView: View {
                         Text("Clicker")
                             .font(.caption)
                     }
-                    .foregroundColor(.gray)
+                    .foregroundColor(.black)
                 }
                 .padding()
                 .background(Color.white)
