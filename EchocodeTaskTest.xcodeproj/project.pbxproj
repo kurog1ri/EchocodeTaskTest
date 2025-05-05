@@ -10,9 +10,22 @@
 		992460832DC7854800DD5FF0 /* EchocodeTaskTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EchocodeTaskTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		99228C192DC7A63D00BCBC61 /* Exceptions for "EchocodeTaskTest" folder in "EchocodeTaskTest" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 992460822DC7854800DD5FF0 /* EchocodeTaskTest */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		992460852DC7854800DD5FF0 /* EchocodeTaskTest */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				99228C192DC7A63D00BCBC61 /* Exceptions for "EchocodeTaskTest" folder in "EchocodeTaskTest" target */,
+			);
 			path = EchocodeTaskTest;
 			sourceTree = "<group>";
 		};
@@ -255,6 +268,8 @@
 				DEVELOPMENT_TEAM = B88JUJ97Y7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = EchocodeTaskTest/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "Privacy - Microphone Usage \n";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -284,6 +299,8 @@
 				DEVELOPMENT_TEAM = B88JUJ97Y7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = EchocodeTaskTest/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "Privacy - Microphone Usage \n";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
