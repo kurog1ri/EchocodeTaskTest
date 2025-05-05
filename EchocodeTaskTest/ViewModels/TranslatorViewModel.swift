@@ -177,24 +177,68 @@ class TranslatorViewModel: NSObject, ObservableObject {
     }
     
     func checkMicrophonePermission() {
-        // Just use the existing API and ignore warnings
-        let permission = audioSession.recordPermission
-        
-        self.microphonePermission = {
-            switch permission {
-            case .granted: return .granted
-            case .denied: return .denied
-            default: return .notDetermined
+        if #available(iOS 17.0, *) {
+            // Use AVAudioApplication for iOS 17.0+
+            let authStatus = AVAudioApplication.shared.recordPermission
+            switch authStatus {
+            case .granted:
+                self.microphonePermission = .granted
+            case .denied:
+                self.microphonePermission = .denied
+            default:
+                self.microphonePermission = .notDetermined
             }
-        }()
+        } else {
+            // Fallback for older iOS versions
+            #if compiler(>=5.9) && canImport(Darwin)
+            // We use compiler directives to suppress warnings
+            let authStatus = audioSession.recordPermission
+            switch authStatus {
+            case .granted:
+                self.microphonePermission = .granted
+            case .denied:
+                self.microphonePermission = .denied
+            default:
+                self.microphonePermission = .notDetermined
+            }
+            #else
+            // For older Xcode versions
+            let authStatus = audioSession.recordPermission
+            switch authStatus {
+            case .granted:
+                self.microphonePermission = .granted
+            case .denied:
+                self.microphonePermission = .denied
+            default:
+                self.microphonePermission = .notDetermined
+            }
+            #endif
+        }
     }
     
     func requestMicrophonePermission() {
-        // Still using requestRecordPermission since there's no clear alternative yet
-        audioSession.requestRecordPermission { [weak self] granted in
-            DispatchQueue.main.async {
-                self?.microphonePermission = granted ? .granted : .denied
+        if #available(iOS 17.0, *) {
+            // Use AVAudioApplication class method for iOS 17.0+
+            AVAudioApplication.requestRecordPermission { [weak self] granted in
+                DispatchQueue.main.async {
+                    self?.microphonePermission = granted ? .granted : .denied
+                }
             }
+        } else {
+            // Fallback for older iOS versions with warning suppression
+            #if compiler(>=5.9) && canImport(Darwin)
+            audioSession.requestRecordPermission { [weak self] granted in
+                DispatchQueue.main.async {
+                    self?.microphonePermission = granted ? .granted : .denied
+                }
+            }
+            #else
+            audioSession.requestRecordPermission { [weak self] granted in
+                DispatchQueue.main.async {
+                    self?.microphonePermission = granted ? .granted : .denied
+                }
+            }
+            #endif
         }
     }
     
