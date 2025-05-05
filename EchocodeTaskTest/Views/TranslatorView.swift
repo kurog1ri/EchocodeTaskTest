@@ -575,6 +575,7 @@ struct TranslatorView: View {
             VStack(spacing: 0) {
                 Text("\"App Name\" is asking for permission to access your microphone")
                     .font(.headline)
+                    .foregroundColor(.black)
                     .multilineTextAlignment(.center)
                     .padding(.top, 20)
                     .padding(.horizontal, 20)
@@ -582,7 +583,7 @@ struct TranslatorView: View {
                 Text("Allow access to your microphone to use the app's features")
                     .font(.subheadline)
                     .multilineTextAlignment(.center)
-                    .foregroundColor(.secondary)
+                    .foregroundColor(.black)
                     .padding(.top, 8)
                     .padding(.horizontal, 20)
                     .padding(.bottom, 20)
